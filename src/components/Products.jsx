@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Plus, MoreVertical, Pencil, Trash2 } from 'lucide-react';
 import { apiRequest, apiUpload } from '../utils/apiClient';
+import { resolveImageUrl } from '../config/api';
 import Modal from './Modal.jsx';
 
 const emptyForm = {
@@ -177,7 +178,7 @@ export default function Products() {
               <tr key={product.id} className="border-b border-slate-50 last:border-0">
                 <td className="px-6 py-4">
                   <div className="flex items-center gap-3">
-                    <img src={product.image} alt="" className="w-11 h-11 rounded-xl object-cover bg-slate-100" />
+                    <img src={resolveImageUrl(product.image)} alt="" className="w-11 h-11 rounded-xl object-cover bg-slate-100" />
                     <div>
                       <p className="font-bold">{product.name}</p>
                       <p className="text-xs text-slate-400">{product.category}</p>
@@ -289,7 +290,7 @@ export default function Products() {
           <div className="space-y-2">
             <div className="flex items-center gap-3">
               {form.image && (
-                <img src={form.image} alt="" className="w-12 h-12 rounded-xl object-cover bg-slate-100 shrink-0" />
+                <img src={resolveImageUrl(form.image)} alt="" className="w-12 h-12 rounded-xl object-cover bg-slate-100 shrink-0" />
               )}
               <label className="flex-1 flex items-center justify-center gap-2 bg-slate-100 rounded-xl px-4 py-2.5 text-sm font-medium text-slate-600 cursor-pointer hover:bg-slate-200 transition">
                 {uploading ? 'Uploading...' : 'Upload Image'}
